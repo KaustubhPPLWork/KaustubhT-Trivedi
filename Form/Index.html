@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Index.css" />
+    <title>Form</title>
+    <script src="Index.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>This is a Form</h1>
+    </header>
+    <section>
+      <form>
+        <div>
+          <div class="form-group">
+            <label for="email">Email:&nbsp;</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="Password">Password:&nbsp;</label>
+            <input
+              type="Password"
+              id="Password"
+              name="Password"
+              class="input"
+              minlength="8"
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
