@@ -9,19 +9,27 @@ const PORT = process.env.PORT || 3000
 
 const data = await axios.get(url)
 const cats = data.data
-const catString = JSON.stringify(cats)
-console.log(catString)
+// const catString = JSON.stringify(cats)
+console.log(cats)
 
 app.use(express.json())
 
+// console.log(mappingCats)
 app.get('/', (req, res) => {
+    let catArray = []
+    const mappingCats = cats.map((cat) => {console.log(cat.breeds)
+        catArray.push(cat.breeds)
+    })
+    res.send(catArray)
+    res.send(mappingCats)
     res.send(cats)
 })
 
-// app.get('/:id', (req, res) => {
-//     const cat = cats.id
-//     res.send(cat)
-// })
+app.get('/:id', (req, res) => {
+    const cat = cats.find(cat => cat.id)
+    console.log(cat)
+    res.send(cat)
+})
 app.listen(PORT, (req, res) => {
     console.log(`listening on port ${PORT}...`)
 })
