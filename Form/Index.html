@@ -13,32 +13,71 @@
       <h1>This is a Form</h1>
     </header>
     <section>
-      <form>
+      <form onsubmit="validateForm()">
+        <p id="error"></p>
         <div>
           <div class="form-group">
-            <label for="email">Email:&nbsp;</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="input"
-              required
-            />
+            <label for="email">*Email:&nbsp;</label>
+            <input type="email" id="email" class="input" required />
           </div>
-          <div class="form-group">
-            <label for="Password">Password:&nbsp;</label>
+
+          <div class="form-group password">
+            <label for="Password">*Password:&nbsp;</label>
             <input
               type="Password"
               id="Password"
-              name="Password"
               class="input"
               minlength="8"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <div>
+            <label for="gender">Gender: &nbsp;</label>
+            <select id="gender" name="gender" required>
+              <option value="gender">Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="admin"
+              name="role"
+              id="role_admin"
+              checked
+              required
+            />
+            <label>Admin</label>
+            <input
+              type="radio"
+              value="user"
+              name="role"
+              id="role_user"
+              required
+            />
+            <label>User</label>
+          </div>
+          <div>
+            <label>Perm1</label>
+            <input type="checkbox" name="permission1" id="perm1" />
+            <label>Perm2</label>
+            <input type="checkbox" name="permission2" id="perm2" />
+            <label>Perm3</label>
+            <input type="checkbox" name="permission3" id="perm3" />
+            <label>Perm4</label>
+            <input type="checkbox" name="permission4" id="perm4" />
+          </div>
+          <button type="submit" id="submit">Submit</button>
+          <button type="submit" id="confirm">Confirm</button>
         </div>
       </form>
+    </section>
+    <section id="result">
+      <div id="confEmail"></div>
+      <div id="confPassword"></div>
+      <div id="confPerms"></div>
     </section>
   </body>
 </html>
