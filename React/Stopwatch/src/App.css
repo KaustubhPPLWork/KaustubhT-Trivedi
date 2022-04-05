@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+* {
+  font-size: larger;
+  font-family: monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.timer {
+  margin-top: 2rem;
+}
+
+.stopwatch__container {
+  margin-bottom: 5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
