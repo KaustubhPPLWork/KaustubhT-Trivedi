@@ -1,22 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-* {
-  font-size: larger;
-  font-family: monospace;
-}
-
 .App {
-  text-align: center;
-}
-
-.timer {
-  margin-top: 2rem;
-}
-
-.stopwatch__container {
-  margin-bottom: 5rem;
-}
-
-.buttons {
+  /* background-color: rgb(238, 238, 238); */
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
