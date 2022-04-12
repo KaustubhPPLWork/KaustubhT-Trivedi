@@ -17,7 +17,6 @@ function Laps(props) {
                                 const curTime = lap;
                                 laptime = curTime - prevTime;
                             }
-
                             return (
                                 <Eachlap index={index} lap={lap} laptime={laptime} />
                             )
