@@ -2,16 +2,17 @@ import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { Form, Input, Button } from "antd";
 
 interface Props {
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const StateHooksComponent: React.FC<Props> = ({ }) => {
+const StateHooksComponent: React.FC<any> = ({ }) => {
 
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(name);
+    alert(name);
   };
 
   const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +39,7 @@ const StateHooksComponent: React.FC<Props> = ({ }) => {
   }, [name]);
 
   return (
-    <Form layout="inline" onSubmit={handleSubmit}>
+    <Form layout="inline" onSubmitCapture={handleSubmit}>
       <Form.Item>
         <Input type="text" placeholder="name" value={name} onChange={onNameChange} />
         <Input type="text" placeholder="address" value={address} onChange={onAddressChange} />
