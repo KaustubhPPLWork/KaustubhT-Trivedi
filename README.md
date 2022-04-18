@@ -2,7 +2,7 @@
 <h1 align="center">Hi 👋, I'm Kaustubh</h1>
 <h3 align="center">A passionate front-end developer.</h3>
 
-- 🌱 I’m currently learning **NESTJS**
+- 🌱 I’m currently learning **React Native**
 
 - 📫 How to reach me **kaustubh_pplwork@pplwork.com**
 
