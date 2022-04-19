@@ -1,35 +1,42 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
-
+import { useState } from "react";
+import { Text, View, TextInput, Button } from "react-native";
+import styles from "./Styles";
 export default function App() {
+  const [goal, setGoal] = useState("");
+  const [goals, setGoals] = useState([]);
+  const handleOnChangeText = (enteredText) => {
+    setGoal(enteredText);
+  };
+  const buttonClickHandler = () => {
+    console.log(goals);
+    setGoals((goals) => [...goals, goal]);
+    // goals.push(goal);
+  };
+  const clearButtonHandler = () => {
+    setGoals([]);
+  };
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+    <View style={styles.screen}>
+      <View style={styles.inputBox}>
         {/* user input  */}
         <TextInput
           placeholder="Course Goal"
-          style={{
-            width: "80%",
-            height: 40,
-            borderBottomColor: "black",
-            borderWidth: 1,
-          }}
+          value={goal}
+          onChangeText={handleOnChangeText}
+          style={styles.textInput}
         />
-        <Button title="Submit" />
+        <Button
+          title="Submit"
+          style={styles.button}
+          onPress={buttonClickHandler}
+        />
       </View>
-      <View>{/* Paragraph  */}</View>
+      <View>
+        <Button title="Clear" onPress={clearButtonHandler} />
+        {goals.map((goal) => (
+          <Text key={goal}>{goal}</Text>
+        ))}
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 50,
-  },
-});
