@@ -4,13 +4,7 @@ const styles = StyleSheet.create({
   screen: {
     padding: 50,
   },
-  textInput: {
-    width: "80%",
-    height: 40,
-    marginRight: 50,
-    borderBottomColor: "black",
-    borderWidth: 1,
-  },
+  textInput: {},
   button: {
     width: 50,
     margin: 10,
@@ -20,8 +14,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
   },
-  table:{
-    zIndex:10
-  }
+  goalData: {
+    
+  },
 });
 export default styles;
