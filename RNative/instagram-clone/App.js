@@ -1,21 +1,25 @@
 // RN specific imports
 import { useEffect, useState, Fragment } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 // Modules Imports
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 //Firebase Import
 import firebase from "firebase/compat/app";
-import { getFirestore } from "firebase/firestore";
-
-// import ;
+// Redux component imports
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./redux/Reducers";
+import thunk from "redux-thunk";
 // Component Imports
 import Landing from "./Components/Auth/Landing";
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+import Main from "./Components/Main";
+// Creating required bit and pieces
 const Stack = createStackNavigator();
+// const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Firebase Config
 const firebaseConfig = {
@@ -34,20 +38,11 @@ if (firebase.apps.length === 0) {
 }
 export default function App() {
   // States Definition
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   //Checking loggedIn state
   useEffect(() => {
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (!user) {
-    //     setIsLoggedIn(false);
-    //     setIsLoaded(true);
-    //   } else {
-    //     setIsLoggedIn(true);
-    //     setIsLoaded(true);
-    //   }
-    // });
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -59,7 +54,7 @@ export default function App() {
       }
     });
   });
-
+  console.log(rootReducer);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Landing">

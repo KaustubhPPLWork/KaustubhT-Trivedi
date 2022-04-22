@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 // Firebase Import
 import firebase from "firebase/compat/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 const Register = (props) => {
   //Setting up states for user details
@@ -16,9 +16,7 @@ const Register = (props) => {
     const auth = getAuth();
     const user = auth.currentUser;
     console.log(user.uid);
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         // Saving to database
         const db = getFirestore();
