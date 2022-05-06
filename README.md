@@ -6,7 +6,7 @@
 
 - 📫 How to reach me **kaustubh_pplwork@pplwork.com**
 
-<!-- <h3 align="left">Connect with me:</h3> -->
+<h3 align="left">Connect with me <a href="https://www.linkedin.com/in/kaustubh-trivedi-459399158/">on LinkedIn</a></h3>
 <p align="left">
 </p>
 
