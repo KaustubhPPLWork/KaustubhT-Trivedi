@@ -1,0 +1,16 @@
+// Definitions
+@import "Abstracts/functions";
+@import "Abstracts/mixins";
+@import "Abstracts/variables";
+// Animations and utilities
+@import "Base/animations";
+@import "Base/base";
+@import "Base/typography";
+@import "Base/utilities";
+// Components
+@import "Components/buttons";
+// Layouts
+@import "Layout/header";
+@import 'Layout/grid';
+// Pages
+@import "Pages/home";
