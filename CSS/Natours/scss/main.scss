@@ -8,9 +8,14 @@
 @import "Base/typography";
 @import "Base/utilities";
 // Components
+@import "Components/bg-video";
 @import "Components/buttons";
+@import "Components/card";
+@import "Components/composition";
+@import "Components/feature-box";
+@import "Components/story";
 // Layouts
 @import "Layout/header";
-@import 'Layout/grid';
+@import "Layout/grid";
 // Pages
 @import "Pages/home";
