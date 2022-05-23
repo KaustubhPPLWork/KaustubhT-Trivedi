@@ -24,6 +24,7 @@ const Register = (props) => {
           name,
           email,
         });
+        console.log("User Created Successfully")
       })
       .catch((err) => {
         alert(err);
