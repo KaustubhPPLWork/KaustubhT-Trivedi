@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "873102315279",
+    "project_id": "tinder-native-30005",
+    "storage_bucket": "tinder-native-30005.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873102315279:android:610d2eef74a1239317b87a",
+        "android_client_info": {
+          "package_name": "com.reactnativefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873102315279-84k9pgf6ieu6ucrqq8mcvj7jj59bude0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reactnativefirebase",
+            "certificate_hash": "0ad0a919cbabded774002266ecb1832f6ff2b8dc"
+          }
+        },
+        {
+          "client_id": "873102315279-2b94asrq6bd9bsuvh8ehoukkuhbiupeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvP20byev53GkAijfLyDkktwAPioT9VF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873102315279-2b94asrq6bd9bsuvh8ehoukkuhbiupeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

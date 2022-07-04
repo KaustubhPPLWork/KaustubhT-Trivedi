@@ -7,5 +7,19 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/node_modules": true
-    }
+    },
+    "gitConfigUser.profiles": [
+        {
+            "label": "Work",
+            "email": "kaustubh_trivedi@pplwork.com",
+            "userName": "KaustubhPPLWork",
+            "selected": true
+        },
+        {
+            "label": "Personal",
+            "userName": "Kaustubh Trivedi",
+            "email": "kaus12tri@gmail.com",
+            "selected": false
+        }
+    ]
 }
