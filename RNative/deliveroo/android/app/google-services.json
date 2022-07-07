@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1031408160350",
+    "project_id": "deliveroo-644ab",
+    "storage_bucket": "deliveroo-644ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031408160350:android:7f69de8d8e1a0e5a26aecf",
+        "android_client_info": {
+          "package_name": "com.deliveroo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031408160350-1slrt8844vrllsvgr5d1msmtprsq84n4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deliveroo",
+            "certificate_hash": "125e00e180dbe394e29884d95aeeb7db04eb095e"
+          }
+        },
+        {
+          "client_id": "1031408160350-g6qov12772m82qd2vhe3o3skdlt6soav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjP9wkYSD7Q3mzC4tuvZt-cTqAe6Cverk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031408160350-g6qov12772m82qd2vhe3o3skdlt6soav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
