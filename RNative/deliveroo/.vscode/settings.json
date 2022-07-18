@@ -1,12 +1,4 @@
 {
-    "gitConfigUser.profiles": [
-        {
-            "label": "KaustubhPPLWork",
-            "email": "kaustubh_trivedi@pplwork.com",
-            "userName": "KaustubhPPLWork",
-            "selected": true
-        }
-    ],
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
