@@ -14,7 +14,8 @@ const RestaurantCard = ({
   lat,
 }) => {
   return (
-    <View>
+    <View >
+      {/* <Image /> */}
       <Text>{title}</Text>
     </View>
   );
