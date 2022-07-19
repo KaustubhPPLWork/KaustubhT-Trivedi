@@ -1,17 +1,17 @@
 export default {
   name: 'category',
-  title: 'Category',
+  title: 'Menu Category',
   type: 'document',
   fields: [
     {
-      name: 'title',
+      name: 'name',
       title: 'Title',
       type: 'string',
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'image',
+      title: 'Image of category',
+      type: 'image',
     },
   ],
 }
