@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -18,13 +18,27 @@ import {
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import tw from 'twrnc'
+import client from '../sanity';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState([])
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
+
+
+
+  useEffect(()=>{
+    client.fetch(`*[_type=='restaurant']{
+      ...,
+      dishes[]->{
+        name,
+        price
+      }
+    }`).then(data=>setFeaturedCategories(data))
+  },[])
   return (
     <SafeAreaView style={tw`bg-white pt-5`}>
       {/* Header */}
