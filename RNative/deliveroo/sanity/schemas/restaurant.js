@@ -16,46 +16,44 @@ export default {
       validation: Rule => Rule.max(200),
     },
     {
-      name: "image",
+      name: 'image',
       type: "image",
-      title: "Image of the restaurant",
+      title: " Image of a the restaurant",
     },
     {
       name: "lat",
-      type: "number",
-      title: "Latitude of the resturant",
+      type: 'number',
+      title: "Latitude of the restaurant",
     },
     {
       name: "long",
       type: "number",
-      title: "Longitude of the restaurant",
+      title: "Longitute of the restaurant",
     },
     {
       name: "address",
       type: "string",
-      title: "Restaurant Address",
+      title: "Address of the restaurant",
       validation: Rule => Rule.required(),
     },
     {
       name: "rating",
       type: "number",
-      title: "Enter a rating from 1-5 (stars)",
-      validation: Rule => Rule.required().min(1).max(5).error("Please enter a value between 1 and 5"),
+      title: "Enter the rating from 1-5",
+      validation: (Rule) => Rule.required().min(1).max(5).error("Please enter a value between 1 and 5")
     },
     {
       name: "type",
       type: "reference",
       title: "Category",
-      validation: Rule => Rule.required(),
-      to: [{ type: "category" }]
+      to: [{ type: "category" }],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "dishes",
       type: "array",
       title: "Dishes",
-      validation: Rule => Rule.required(),
       of: [{ type: "reference", to: [{ type: "dish" }] }]
-    },
-
-  ],
+    }
+  ]
 }

@@ -23,22 +23,30 @@ import client from '../sanity';
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([])
+  const query = `*[_type == 'featured']{
+    ...,
+    restaurants[]->{
+      dishes[]->{
+          ...,
+      }
+    }
+  }`
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
+  useEffect(() => {
+    client.fetch(query).then((data) => {
+      setFeaturedCategories(data)
+    })
+  }, [])
 
 
-  useEffect(()=>{
-    client.fetch(`*[_type=='restaurant']{
-      ...,
-      dishes[]->{
-        name,
-        price
-      }
-    }`).then(data=>setFeaturedCategories(data))
-  },[])
+
+
+
+
   return (
     <SafeAreaView style={tw`bg-white pt-5`}>
       {/* Header */}
@@ -84,25 +92,14 @@ const HomeScreen = () => {
         {/* Featured Rows */}
 
         {/* Featured */}
-        <FeaturedRow
-          id="1"
-          title="Featured"
-          description="Paid placements from our partners"
-        />
-
-        {/* Tasty Discounts */}
-        <FeaturedRow
-          id="2"
-          title="Tasty Discounts"
-          description="Paid placements from our partners"
-        />
-
-        {/* Offers near you */}
-        <FeaturedRow
-          id="3"
-          title="Offers near you"
-          description="Paid placements from our partners"
-        />
+        {featuredCategories?.map(category => (
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

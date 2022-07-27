@@ -4,24 +4,24 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'name',
-      type:"string",
-      title:"Name of Dish",
+      name: "name",
+      type: "string",
+      title: "Name of the dish",
       validation: Rule => Rule.required(),
     },
     {
-      name: 'short_description',
-      type:"string",
-      title:"Short Description",
+      name: "short_description",
+      type: "string",
+      title: "Short Description of the dish",
       validation: Rule => Rule.max(200),
     },
     {
-      name: 'price',
-      type:"string",
+      name:"price",
+      type:"number",
       title:"Price of the dish",
     },
     {
-      name: 'image',
+      name:"image",
       type:"image",
       title:"Image of the dish",
     }
