@@ -1,124 +1,75 @@
-import { View, Text, ScrollView } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { ArrowRightIcon } from 'react-native-heroicons/outline';
-import RestaurantCard from './RestaurantCard';
-import tw from 'twrnc'
-import client from '../sanity';
+import { View, Text, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ArrowRightIcon } from "react-native-heroicons/outline";
+import RestaurantCard from "./RestaurantCard";
+import sanityClient from "../sanity";
 
 const FeaturedRow = ({ id, title, description }) => {
+  const [restaurants, setRestaurants] = useState([]);
 
-    const [restaurants, setRestaurants] = useState([])
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `
+      *[_type == "featured" && _id == $id] {
+        ...,
+        restaurants[]->{
+          ...,
+          dishes[]->,
+          type-> {
+            name
+          }
+        },
+      }[0]
+    `,
+        { id }
+      )
+      .then((data) => {
+        console.log("restaurants:", data?.restaurants);
+        setRestaurants(data?.restaurants);
+      })
+      .catch((err) => {
+        console.log("Err at Featured Row:", err);
+      });
+  }, [id]);
 
-    // const query = `*[_type == 'featured' && _id == '${id}']{
-    //     ...,
-    //     restaurants[]->{
-    //       dishes[]->{
-    //         ...,
-    //       }
-    //     }
-    //   }`
+  return (
+    <View>
+      <View className="mt-4 flex-row items-center justify-between px-4">
+        <Text className="font-bold text-lg">{title}</Text>
+        <ArrowRightIcon color="#00CCBB" />
+      </View>
 
+      <Text className="text-xs text-gray-500 px-4">{description}</Text>
 
-    useEffect(() => {
-        client.fetch(`*[_type == 'featured' && _id == $id]{
-            ...,
-            restaurants[]->{
-              ...,
-            }
-          }[0]`, { id }).then((data) => {
-            setRestaurants(data.restaurants)
-        })
-    }, [id])
+      <ScrollView
+        horizontal
+        contentContainerStyle={{
+          paddingHorizontal: 15,
+        }}
+        showsHorizontalScrollIndicator={false}
+        className="pt-4"
+      >
+        {/* RestaurantCards */}
 
-
-    // console.log(restaurants);
-
-    return (
-        <View style={tw`px-4`}>
-            <View style={tw`mt-4 flex-row items-center justify-between`}>
-                <Text style={tw`font-bold text-lg`}>{title}</Text>
-                <ArrowRightIcon color="#00ccbb" />
-            </View>
-
-            <Text style={tw`text-xs text-gray-500`}>{description}</Text>
-
-            <ScrollView
-                horizontal
-                StickyHeaderComponent
-                contentContainerStyle={{ paddingHorizontal: 15 }} // this is the inner scroll view style
-                showsHorizontalScrollIndicator={false}
-                style={tw`-ml-4`} // this is the overall scroll view style
-            >
-
-                {/* Restaurants Cards */}
-
-                {restaurants?.map(restaurant => (
-                    <RestaurantCard
-                        key={restaurant._id}
-                        id={restaurant._id}
-                        imgUrl={restaurant.image}
-                        title={restaurant.name}
-                        rating={restaurant.rating}
-                        genre={restaurant.type?.name}
-                        address={restaurant.address}
-                        short_description={restaurant.short_description}
-                        dishes={restaurant.dishes}
-                        long={restaurant.long}
-                        lat={restaurant.lat}
-                    />
-                ))}
-                {/* <RestaurantCard
-                    id={123}
-                    imgUrl="https://links.papareact.com/gn7"
-                    title="Yo! Sushi"
-                    rating={4.5}
-                    genre="Japanese"
-                    address="123 Main St"
-                    short_description="This is a test description"
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                />
-                <RestaurantCard
-                    id={123}
-                    imgUrl="https://links.papareact.com/gn7"
-                    title="Yo! Sushi"
-                    rating={4.5}
-                    genre="Japanese"
-                    address="123 Main St"
-                    short_description="This is a test description"
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                />
-                <RestaurantCard
-                    id={123}
-                    imgUrl="https://links.papareact.com/gn7"
-                    title="Yo! Sushi"
-                    rating={4.5}
-                    genre="Japanese"
-                    address="123 Main St"
-                    short_description="This is a test description"
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                />
-                <RestaurantCard
-                    id={123}
-                    imgUrl="https://links.papareact.com/gn7"
-                    title="Yo! Sushi"
-                    rating={4.5}
-                    genre="Japanese"
-                    address="123 Main St"
-                    short_description="This is a test description"
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                /> */}
-            </ScrollView>
-
-        </View>
-    );
+        {restaurants?.map((restaurant, i) => (
+          <RestaurantCard
+            key={`${restaurant._id}-${i}`}
+            id={restaurant._id}
+            imgUrl={restaurant.image}
+            title={restaurant.name}
+            rating={restaurant.rating}
+            genre={restaurant.type?.name}
+            address={restaurant.address}
+            shortDescription={restaurant.short_description}
+            dishes={restaurant.dishes}
+            long={restaurant.long}
+            lat={restaurant.lat}
+          />
+        ))}
+      </ScrollView>
+    </View>
+  );
 };
 
 export default FeaturedRow;
