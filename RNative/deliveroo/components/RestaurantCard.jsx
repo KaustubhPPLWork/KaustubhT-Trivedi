@@ -4,6 +4,7 @@ import { LocationMarkerIcon } from 'react-native-heroicons/outline'
 import React from 'react';
 import tw from 'twrnc'
 import { urlFor } from '../sanity';
+import { useNavigation } from '@react-navigation/native';
 
 const RestaurantCard = ({
   id,
@@ -17,9 +18,23 @@ const RestaurantCard = ({
   long,
   lat,
 }) => {
+
+  const navigation = useNavigation()
+
   return (
-    <TouchableOpacity style={tw`bg-white mr-3 shadow mt-2`}>
-      <Image source={{ uri: urlFor(imgUrl).url()} } style={tw`h-36 w-64 rounded-sm`} />
+    <TouchableOpacity style={tw`bg-white mr-3 shadow mt-2`} onPress={() => navigation.navigate("Restaurant", {
+      id,
+      imgUrl,
+      title,
+      rating,
+      genre,
+      address,
+      short_description,
+      dishes,
+      long,
+      lat,
+    })}>
+      <Image source={{ uri: urlFor(imgUrl).url() }} style={tw`h-36 w-64 rounded-sm`} />
       <View style={tw`px-3 pb-4`}>
         <Text style={tw`font-bold text-lg pt-2`}>{title}</Text>
         <Text style={tw`max-w-64`}>{short_description}</Text>
