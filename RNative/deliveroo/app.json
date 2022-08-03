@@ -1,10 +1,14 @@
 {
+  "displayName":"deliveroo",
   "expo": {
     "name": "deliveroo",
     "slug": "deliveroo",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.twotwentyfive.deliveroo"
+    }
   }
 }

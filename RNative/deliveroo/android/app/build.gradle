@@ -235,6 +235,13 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release{
+            if (project.hasProperty('my-upload-key.keystore')) {
+                storeFile file(my-upload-key.keystore)
+                storePassword 'kaustubh'
+                keyAlias 'kaustubh trivedi'
+                keyPassword 'kaustubh'
+        }
     }
     buildTypes {
         debug {
@@ -246,6 +253,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 

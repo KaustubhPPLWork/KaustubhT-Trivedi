@@ -17,7 +17,7 @@ const Categories = () => {
         setCategories(data);
       })
       .catch((err) => {
-        console.log("Err from category:", err);
+        // console.log("Err from category:", err);
       });
   }, []);
 
