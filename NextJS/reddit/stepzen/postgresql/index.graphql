@@ -17,15 +17,24 @@ type Post {
   created_at: DateTime
   id: ID!
   image: String
-  subreddit: Subreddit
-    @materializer(
-      query: "getSubreddit"
-      arguments: [{ name: "id", field: "subreddit_id" }]
-    )
   subreddit_id: ID
   title: String
   username: String
-  voteList: [Vote] @materializer(query: "getVoteUsingPost_id")
+  votes: [Vote]
+    @materializer(
+      query: "getVotesByPostId"
+      arguments: [{ name: "post_id", field: "id" }]
+    )
+  comments: [Comment]
+    @materializer(
+      query: "getCommentByPostId"
+      arguments: [{ name: "post_id", field: "id" }]
+    )
+  subreddit: [Subreddit]
+    @materializer(
+      query: "getSubredditListById"
+      arguments: [{ name: "id", field: "subreddit_id" }]
+    )
 }
 
 type Subreddit {
@@ -66,6 +75,14 @@ type Query {
       table: "comment"
       configuration: "postgresql_config"
     )
+  getCommentByPostId(post_id: ID!): [Comment]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "comment" where "post_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
   getPostList: [Post]
     @dbquery(
       type: "postgresql"
@@ -90,13 +107,12 @@ type Query {
       """
       configuration: "postgresql_config"
     )
-  getVoteUsingPost_id(id: ID!): [Vote]
+  getVotesByPostId(id: ID!): [Vote]
     @dbquery(
       type: "postgresql"
       query: """
-      SELECT T."created_at", T."id", T."post_id", T."upvote", T."username"
-        FROM "public"."vote" T
-        WHERE T."post_id" = $1
+      select * from "vote" where "post_id" = $1
+      order by "created_at" desc
       """
       configuration: "postgresql_config"
     )
@@ -107,6 +123,26 @@ type Query {
       table: "subreddit"
       configuration: "postgresql_config"
     )
+
+  getSubredditListByTopic(topic: String): [Subreddit]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      select * from "subreddit" where "topic" = $1
+      """
+      configuration: "postgresql_config"
+    )
+
+  getSubredditListById(id: ID): [Subreddit]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "subreddit" where "id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+
   getSubreddit(id: ID!): Subreddit
     @dbquery(
       type: "postgresql"
@@ -147,7 +183,7 @@ type Mutation {
   insertComment(
     post_id: ID!
     text: String!
-    created_at: DateTime!
+    # created_at: DateTime!
     username: String!
   ): Comment
     @dbquery(
@@ -168,7 +204,6 @@ type Mutation {
   insertPost(
     image: String!
     body: String!
-    created_at: DateTime!
     subreddit_id: ID!
     title: String!
     username: String!
@@ -188,7 +223,7 @@ type Mutation {
       dml: DELETE
       configuration: "postgresql_config"
     )
-  insertSubreddit(created_at: DateTime!, topic: String!): Subreddit
+  insertSubreddit(topic: String!): Subreddit
     @dbquery(
       type: "postgresql"
       schema: "public"

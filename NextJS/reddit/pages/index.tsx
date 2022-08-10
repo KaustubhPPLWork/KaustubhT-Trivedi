@@ -1,7 +1,8 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Header from '../components/Header'
-import PostBox from '../components/PostBox'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Header from "../components/Header";
+import PostBox from "../components/PostBox";
+import Feed from "../components/Feed";
 // import Image from 'next/image'
 
 const Home: NextPage = () => {
@@ -14,11 +15,12 @@ const Home: NextPage = () => {
 
       {/* Post Box */}
       <PostBox />
-      <div>
-        {/* Feed */}
+      {/* Feed */}
+      <div className="flex">
+        <Feed />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
