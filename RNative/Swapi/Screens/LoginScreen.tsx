@@ -1,9 +1,10 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, TouchableOpacity} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState, useEffect} from 'react';
 import {RootStackParamList} from '../App';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import tw from 'twrnc';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SwapiMain'>;
 
@@ -43,9 +44,10 @@ const LoginScreen = ({navigation}: Props) => {
   };
 
   return (
-    <View>
-      <Text>Login</Text>
-      <Button title="Lets get started" onPress={onGoogleSignIn} />
+    <View style={tw` m-auto`}>
+      <TouchableOpacity onPress={onGoogleSignIn} style={tw`bg-[#4285F4] px-5 py-2 rounded-lg`}>
+        <Text style={tw`font-medium text-2xl text-gray-700`}>Login with Google</Text>
+      </TouchableOpacity>
     </View>
   );
 };
