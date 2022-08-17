@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "676326197305",
+    "project_id": "swapi-2e3cf",
+    "storage_bucket": "swapi-2e3cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676326197305:android:2e4217dc2e331ba0aba5e8",
+        "android_client_info": {
+          "package_name": "com.swapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676326197305-b3uikdfn4b60ga48h4b3pjr6tjmp0232.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swapi",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "676326197305-a0u402susp46kojar6dfio4houqc3aad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9UGTuKDyv6RNJlIknMnDIPLwBy_6u-U0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676326197305-a0u402susp46kojar6dfio4houqc3aad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
