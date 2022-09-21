@@ -1,13 +1,11 @@
 The candidate was asked to create a new react project in which he had to render data that was fetched from an api
 and then it was supposed to be rendered alphabetically in ascending order. Once the names were rendered, he had to 
-style them with container first and content inside the container and add Name as a pseudo element ::before.
+style them with container first and content inside the container.
 
-        Projects - E-com , General Store website
-		CSS - Decent knowledge of CSS concepts
-		JS - Good Javascript knowledge
-		React -Had good knowledge of React and was able to sovle the given assignment correctly and in given time
-        Problem Solving - FizzBuzz question, if a number is divisible by 2 print Fizz, if by 3 print Buzz, if by 5, print FizzBuzz
-		English Communication - Good
-		Client Ability - yes
-		Recommendation - would recommend for next round.
-		Feedback - NA.  
+
+Didn't know how to use useEffect
+Needed lots of hints and documentation references for finishing the assignment and still was not able to finish the assignment on own
+Needed hints and help in CSS as well
+
+
+Will not recommend for the next round

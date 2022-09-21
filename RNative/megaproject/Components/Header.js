@@ -1,5 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import * as SolidIcons from 'react-native-heroicons/solid'
+import * as OutlineIcons from 'react-native-heroicons/outline'
 import { useNavigation } from '@react-navigation/native'
+import InstagramLogo from '../Assets/Brands/Instagram_Glyph_Black.png'
+import SvgImage from 'react-native-svg'
 import React from 'react'
 
 
@@ -10,18 +14,18 @@ const Header = () => {
             {/* Header */}
             <View style={styles.header}>
                 {/* For Logo View */}
-                <View>
+                <View style={styles.headerContent}>
                     <TouchableOpacity>
-                        <Text style={styles.headerContent}>Logo</Text>
+                        <Text>Logo</Text>
                     </TouchableOpacity>
                 </View>
                 {/* For Chat button and Camera Button */}
                 <View style={{ display: 'flex', flexDirection: "row" }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
-                        <Text style={styles.headerContent}>CameraIcon</Text>
+                        <Text style={styles.headerContent}><OutlineIcons.CameraIcon size={25} color="black" /></Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.headerContent}>Chats</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Chat")}>
+                        <Text style={styles.headerContent}><OutlineIcons.ChatBubbleBottomCenterIcon size={25} color="black" /></Text>
                     </TouchableOpacity>
                 </View>
             </View>
